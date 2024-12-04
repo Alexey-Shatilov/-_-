@@ -5,15 +5,14 @@ public class Horse extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-
-        if (!super.canMoveToPosition(chessBoard, line, column, toLine, toColumn)) {
-            return false;
+        if (toLine < 0 || toLine >= 8 || toColumn < 0 || toColumn >= 8 ||
+                (line == toLine && column == toColumn)) {
+            return false; 
         }
 
-        if ((Math.abs(toLine - line) == 2 && Math.abs(toColumn - column) == 1) || (Math.abs(toLine - line) == 1 && Math.abs(toColumn - column) == 2)) {
-            return true;
-        }
-        return false;
+        int deltaLine = Math.abs(toLine - line);
+        int deltaColumn = Math.abs(toColumn - column);
+        return (deltaLine == 2 && deltaColumn == 1) || (deltaLine == 1 && deltaColumn == 2);
     }
 
     @Override

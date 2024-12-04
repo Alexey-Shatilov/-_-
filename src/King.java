@@ -5,12 +5,14 @@ public class King extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-
-        if (!super.canMoveToPosition(chessBoard, line, column, toLine, toColumn)) {
+        if (toLine < 0 || toLine >= 8 || toColumn < 0 || toColumn >= 8 ||
+                (line == toLine && column == toColumn)) {
             return false;
         }
 
-        return Math.abs(toLine - line) <= 1 && Math.abs(toColumn - column) <= 1;
+        int deltaLine = Math.abs(toLine - line);
+        int deltaColumn = Math.abs(toColumn - column);
+        return (deltaLine <= 1 && deltaColumn <= 1);
     }
 
     @Override
@@ -19,7 +21,6 @@ public class King extends ChessPiece {
     }
 
     public boolean isUnderAttack(ChessBoard board, int line, int column) {
-
         return false;
     }
 }

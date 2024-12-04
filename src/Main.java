@@ -86,7 +86,9 @@ public class Main {
                         if (board.moveToPosition(line, column, toLine, toColumn)) {
                             System.out.println("Успешно передвинулись");
                             board.printBoard();
-                        } else System.out.println("Передвижение не удалось");
+                        } else {
+                            System.out.println("Передвижение не удалось");
+                        }
                     } catch (Exception e) {
                         System.out.println("Вы что-то ввели не так, попробуйте ещё раз");
                     }
